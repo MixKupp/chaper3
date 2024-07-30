@@ -7,15 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-    public static  Stage primaryStage;
+    public static Stage primaryStage;
     public static HostServices hs;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
         primaryStage = stage;
         hs = getHostServices();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-view.fxml"));
@@ -24,4 +20,6 @@ public class Launcher extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    static void main(String[] args) { launch(args); }
 }

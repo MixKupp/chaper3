@@ -12,15 +12,6 @@ public class PdfDocument {
     private String name;
     private String filePath;
     private PDDocument document;
-
-    public LinkedHashMap<String, List<FileFreq>> getUniqueSets() {
-        return uniqueSets;
-    }
-
-    public void setUniqueSets(LinkedHashMap<String, List<FileFreq>> uniqueSets) {
-        this.uniqueSets = uniqueSets;
-    }
-
     private LinkedHashMap<String, List<FileFreq>> uniqueSets;
 
     public String getName() {
@@ -41,5 +32,4 @@ public class PdfDocument {
         File pdfFile = new File(filePath);
         this.document = PDDocument.load(pdfFile);
     }
-
 }
