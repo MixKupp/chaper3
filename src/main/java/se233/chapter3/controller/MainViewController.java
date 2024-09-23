@@ -14,6 +14,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import se233.chapter3.Launcher;
 import se233.chapter3.model.FileFreq;
 import se233.chapter3.model.PdfDocument;
@@ -32,6 +34,8 @@ import java.util.concurrent.Future;
 public class MainViewController {
     private LinkedHashMap<String, List<FileFreq>> uniqueSets;
     private List<String> inputListViewItems = new ArrayList<>();
+    private static final Logger logger = LogManager.getLogger(MainViewController.class);
+
     @FXML
     private ListView<String> inputListView;
     @FXML
@@ -89,6 +93,7 @@ public class MainViewController {
                             String filePath = inputListViewItems.get(i);
                             PdfDocument p = new PdfDocument(filePath);
                             completionService.submit(new WordCountMapTask(p));
+                            logger.info("Indexing {}", inputListViewItems.get(i));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
